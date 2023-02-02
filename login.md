@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin-top: -150px;
   }
   .login-container {
     background-color: #201c1c;
@@ -18,7 +19,7 @@
     box-shadow: 0px 0px 10px 0px #ccc;
   }
   form {
-    margin-top: 30px;
+    margin-top: 10px;
   }
   input {
     width: 100%;
