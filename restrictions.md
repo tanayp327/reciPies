@@ -8,7 +8,7 @@
     <input type="checkbox" id="option3" name="option3" value="Option 3">
     <label for="option3">Gluten Free</label><br><br>
     <input type="checkbox" id="option4" name="option3" value="Option 3">
-    <label for="option3">Lactose Intolerant</label><br><br>
+    <label for="option4">Lactose Intolerant</label><br><br>
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
