@@ -28,8 +28,8 @@
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid #ccc;
-    background-color: #f6f6ef;
-    color: #fff;
+    background-color: #fff;
+    color: #444;
   }
   
   button {
