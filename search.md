@@ -36,10 +36,16 @@
 }
 </script>
 <style>
-   body {
+  body {
     font-family: "Open Sans", sans-serif;
     background-color: #f6f6ef;
-    }
+  }
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+  }
   .search-container {
     display: flex;
     justify-content: center;
@@ -50,11 +56,11 @@
     padding: 20px;
   }
   #search-bar {
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
   }
   input[type="text"] {
     width: 100%;
