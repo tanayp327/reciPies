@@ -11,29 +11,26 @@
 </body>
 <script>
   function search() {
-  var item = document.getElementById("search-bar").value;
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://192.168.7.177:8086/api/item/", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        var response = JSON.parse(xhr.responseText);
+    var item = document.getElementById("search-bar").value;
+    fetch("http://192.168.7.177:8086/api/item/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ item: item })
+    })
+      .then(response => response.json())
+      .then(response => {
         console.log(response);
         var result = document.createElement("div");
-        result.innerHTML = JSON.stringify(response)
+        result.innerHTML = JSON.stringify(response);
         var resultContainer = document.querySelector(".result-container");
         resultContainer.appendChild(result);
-      } else {
-        console.error("Failed to retrieve item: " + xhr.statusText);
-      }
-    }
-  };
-  xhr.onerror = function() {
-    console.error("Failed to make API call: " + xhr.statusText);
-  };
-  xhr.send(JSON.stringify({ item: item }));
-}
+      })
+      .catch(error => {
+        console.error("Failed to make API call: " + error);
+      });
+  }
 </script>
 <style>
   body {
