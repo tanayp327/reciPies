@@ -10,7 +10,7 @@
     <input type="checkbox" id="Lactose Intolerant">
     <label for="Lactose Intolerant">Lactose Intolerant</label><br><br>
   </div>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 
 <style>
