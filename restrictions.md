@@ -9,6 +9,12 @@
     <label for="Gluten Free">Gluten Free</label><br><br>
     <input type="checkbox" id="Lactose Intolerant">
     <label for="Lactose Intolerant">Lactose Intolerant</label><br><br>
+    <input type="checkbox" id="No Fish">
+    <label for="No Fish">No Fish</label><br><br>
+    <input type="checkbox" id="No Shellfish">
+    <label for="No Shellfish">No Shellfish</label><br><br>
+    <input type="checkbox" id="Nut Free">
+    <label for="Nut Free">No Shellfish</label><br><br>
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
