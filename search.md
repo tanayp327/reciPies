@@ -14,36 +14,57 @@
 
 <script>
   function search() {
-    // get the value from the search bar
-    var item = document.getElementById("search-bar").value;
-    
-    // make a POST request to the API
-    fetch("http://192.168.43.32:8086/api/search/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ item: item })
-    })
-      .then(response => response.json())
-      .then(response => {
-        // get the result container
-        var resultContainer = document.querySelector(".result-container");
-        
-        // clear previous results
-        resultContainer.innerHTML = "";
-        
-        // add each result to the container
-        response.forEach(element => {
-          var result = document.createElement("div");
-          result.innerHTML = element;
-          resultContainer.appendChild(result);
-        });
-      })
-      .catch(error => {
-        console.error("Failed to make API call: " + error);
-      });
+  // get the value from the search bar
+  var item = document.getElementById("search-bar").value.trim();
+
+  // check if the search bar is empty
+  if (!item) {
+    alert("Please enter a search term");
+    return;
   }
+
+  // show a loading indicator or message
+  var resultContainer = document.querySelector(".result-container");
+  resultContainer.innerHTML = "Loading...";
+
+  // make a POST request to the API
+  fetch("http://192.168.43.32:8086/api/search/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ item: item })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then(response => {
+      // clear previous results
+      resultContainer.innerHTML = "";
+
+      // check if the API response is empty
+      if (!response || !response.length) {
+        resultContainer.innerHTML = "No results found";
+        return;
+      }
+
+      // add each result to the container
+      response.forEach(element => {
+        var result = document.createElement("div");
+
+        // sanitize the content to prevent XSS attacks
+        result.textContent = element;
+        resultContainer.appendChild(result);
+      });
+    })
+    .catch(error => {
+      alert("Failed to make API call: " + error);
+      resultContainer.innerHTML = "An error occurred while searching";
+    });
+}
 </script>
 <style>
   body {
