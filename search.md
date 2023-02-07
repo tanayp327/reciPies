@@ -11,8 +11,11 @@
 </body>
 <script>
   function search() {
+    // function to search item and display results
     var item = document.getElementById("search-bar").value;
-    fetch("http://192.168.7.177:8086/api/search/", {
+    // get the value of search bar input
+    fetch("http://192.168.43.32:8086/api/search/", {
+      // make API call to search endpoint
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -21,14 +24,22 @@
     })
       .then(response => response.json())
       .then(response => {
-        console.log(response);
-        var result = document.createElement("div");
-        result.innerHTML = JSON.stringify(response);
         var resultContainer = document.querySelector(".result-container");
-        resultContainer.appendChild(result);
+        // select result container
+        resultContainer.innerHTML = "";
+        // clear the result container of any existing results
+        response.forEach(element => {
+          var result = document.createElement("div");
+          // create a div for each result
+          result.innerHTML = element;
+          // set the inner HTML of the result to the content of the result
+          resultContainer.appendChild(result);
+          // add the result div to the result container
+        });
       })
       .catch(error => {
         console.error("Failed to make API call: " + error);
+        // catch any errors in the API call and log them to the console
       });
   }
 </script>
