@@ -6,16 +6,19 @@
         <button type="submit" value="Submit" onclick="search()">Submit</button>
       </form>
     </div>
-    <div class="result-container"></div>
+    <div class="result-container">
+      <!-- placeholder for search results -->
+    </div>
   </div>
 </body>
+
 <script>
   function search() {
-    // function to search item and display results
+    // get the value from the search bar
     var item = document.getElementById("search-bar").value;
-    // get the value of search bar input
+    
+    // make a POST request to the API
     fetch("http://192.168.43.32:8086/api/search/", {
-      // make API call to search endpoint
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -24,22 +27,21 @@
     })
       .then(response => response.json())
       .then(response => {
+        // get the result container
         var resultContainer = document.querySelector(".result-container");
-        // select result container
+        
+        // clear previous results
         resultContainer.innerHTML = "";
-        // clear the result container of any existing results
+        
+        // add each result to the container
         response.forEach(element => {
           var result = document.createElement("div");
-          // create a div for each result
           result.innerHTML = element;
-          // set the inner HTML of the result to the content of the result
           resultContainer.appendChild(result);
-          // add the result div to the result container
         });
       })
       .catch(error => {
         console.error("Failed to make API call: " + error);
-        // catch any errors in the API call and log them to the console
       });
   }
 </script>
