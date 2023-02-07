@@ -12,7 +12,6 @@
 <script>
   function search() {
     var item = document.getElementById("search-bar").value;
-
     fetch("http://192.168.7.177:8086/api/search/", {
       method: "POST",
       headers: {
