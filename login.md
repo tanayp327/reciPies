@@ -60,7 +60,7 @@
         <h2>Login</h2>
         <input type="text" id="input-field" placeholder="Username" required>
         <input type="password" id = "password-field" placeholder="Password" required>
-        <button type="submit" value="Submit">Submit</button>
+        <button type="submit" onclick="submitForm()">Submit</button>
       </form>
           <div class="signup-link">
             <a href="signup">Don't have an account? Sign Up here!</a>
@@ -68,3 +68,26 @@
         </div>
     </div>
 </body>
+
+<script>
+  
+function submitForm() {
+  const username = document.querySelector('#input-field').value;
+  const password = document.querySelector('#password-field').value;
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/api/users/create', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    } else {
+      console.error(xhr.responseText);
+    }
+  };
+  xhr.send(JSON.stringify({
+    name: username,
+    password: password,
+  }));
+}
+</script>
