@@ -25,7 +25,7 @@
 
   // show a loading indicator or message
   var resultContainer = document.querySelector(".result-container");
-  resultContainer.innerHTML = "Loading...";
+  alert("Loading...");
 
   // make a POST request to the API
   fetch("http://192.168.43.32:8086/api/search/", {
@@ -47,7 +47,7 @@
 
       // check if the API response is empty
       if (!response || !response.length) {
-        resultContainer.innerHTML = "No results found";
+        alert("No results found");
         return;
       }
 
@@ -58,11 +58,12 @@
         // sanitize the content to prevent XSS attacks
         result.textContent = element;
         resultContainer.appendChild(result);
+        alert(element);
       });
     })
     .catch(error => {
       alert("Failed to make API call: " + error);
-      resultContainer.innerHTML = "An error occurred while searching";
+      alert("An error occurred while searching");
     });
 }
 </script>
