@@ -4,7 +4,7 @@
   <div class="main-container">
     <div class="search-container">
       <form>
-        <input type="text" id="search-bar" placeholder="Search">
+        <input type="text" id="search-bar" placeholder="Search for a recipe to review">
         <button type="submit" value="Submit" onclick="search()">Submit</button>
       </form>
     </div>
@@ -92,7 +92,7 @@
   #search-bar {
     padding: 10px;
     margin: 10px 0;
-    width: 100%;
+    width: 200%;
     border: 1px solid black;
     border-radius: 4px;
   }
@@ -106,7 +106,7 @@
     font-size: 16px;
   }
   button[type="submit"] {
-    width: 100%;
+    width: 200%;
     background-color: #0096e6;
     color: white;
     padding: 14px 20px;
