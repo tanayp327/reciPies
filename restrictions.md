@@ -13,6 +13,7 @@
     <label for="No Fish">No Fish</label><br><br>
     <input type="checkbox" id="Nut Free">
     <label for="Nut Free">No Shellfish</label><br><br>
+    <button type="submit" value="Submit" onclick="search()">Submit</button>
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
