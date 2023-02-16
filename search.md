@@ -30,7 +30,7 @@
   alert("Loading...");
 
   // make a POST request to the API
-  fetch("http://recipies.duckdns.org/api/search/", {
+  fetch("https://recipies.duckdns.org/api/search/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
