@@ -278,7 +278,7 @@
         document.getElementById("results").style.overflow = "hidden";
         document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
         var content = document.getElementById("searchBar").value;
-        fetch("http://recipies.duckdns.org/api/search/", {
+        fetch("https://recipies.duckdns.org/api/search/", {
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
