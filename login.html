@@ -1,8 +1,12 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <style>
+      
       @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
       body {
         font-family: "Poppins", sans-serif;
@@ -14,16 +18,51 @@
         align-items: center;
         height: 100vh;
       }
+      header {
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          font-size: 20px;
+          display: flex;
+          justify-content: center;
+          align: center;
+          text-align: center;
+          width: 1400px;
+          height: 75px;
+          position: absolute;
+          top: 0px;
+        }
+        header a {
+          color: #fff;
+          text-decoration: none;
+          margin: 0 10px;
+          align: center;
+          font-size: 16px;
+          padding: 10px;
+        }
+        header a:hover {
+          text-decoration: underline;
+        }
+        header h1 {
+          font-size: 24px;
+          margin: 0;
+          padding: 10px;
+        }
+        header h2 {
+          font-size: 24px;
+          margin: 0;
+          padding: 10px;
+        }
       .login-container {
         background-color: #2E2E2E;
         padding: 20px;
         border-radius: 10px;
-        height: 360px;
+        height: 300px;
         width: 400px;
         align: auto;
         text-align: center;
         box-shadow: 0px 0px 10px 0px #ccc;
-        color: #444;
+        color: white;
       }
       form {
         margin-top: 10px;
@@ -64,6 +103,16 @@
     </style>
   </head>
 
+  <header>
+    <table>
+      <tr>
+        <td><a href="/index">Home</a></td>
+        <td><a href="/restrictions">Restrictions</a></td>
+        <td><a href="/reviews">Reviews</a></td>
+        <td><a href="/login">Login</a></td>
+      </tr>
+    </table>
+    </header>
   <body>
     <div class="main-container">
       <div class="login-container">
