@@ -5,19 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReciPies</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        body {
-            font-family: 'Poppins', sans-serif;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            width: 100vw;
-            height: 100vh;
-            margin: 0px;
-            padding: 0px;
-        }
-        header {
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      header {
           background-color: #333;
           color: #fff;
           padding: 20px;
@@ -259,7 +251,7 @@
         <b>Comments: </b>
         <p id="comments"></p>
     </div> -->
-    <div id="instructions">
+    <div id="recipe" style="display:none">
         <h2>Leave a Comment & Rating</h2>
         <div>
             <input id="rating" type="text" placeholder="Rate out of 10">
@@ -288,7 +280,9 @@
     };
     /////////////////////////
     function add_review(object) {
-        <!-- var instructions = recipies[object]; -->
+        var T = document.getElementById("recipe");
+        T.style.display = "block";
+        /// var instructions = recipies[object];
         alert("review"); 
         document.getElementById("search_page").style["display"] = "none";
         document.getElementById("review").style.display = "flex";
@@ -312,15 +306,15 @@
         elem = document.getElementById('instructions');
         elem.innerHTML = res.instructions;
     }
-function addReview(id)
-{
-    let msg = "";
-    debug(msg);
-    msg = "You are in addReview function";
-    debug(msg);
-    receipeId = id.value;
-    alert(receipeId)
-    context = this.context;
+    function addReview(id)
+    {
+        let msg = "";
+        debug(msg);
+        msg = "You are in addReview function";
+        debug(msg);
+        receipeId = id.value;
+        alert(receipeId)
+        context = this.context;
     }
     //////////////////////////////////
     function favourite_recipe() {
@@ -374,3 +368,4 @@ function addReview(id)
         })
     })
 </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
