@@ -194,12 +194,14 @@
             gap: 5px;
             margin-top: 10px;
         }
-        #underNav {
+        
+        #nav {
             position: fixed;
-            height: 160px;
+            height: 100px;
             width: 100%;
-            margin-top: -680px;
-            background-color: rgb(255, 255, 255);
+            background-color: black;
+            top: 0px;
+            left: 0px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -227,9 +229,8 @@
     </style>
 </head>
 <body>
-    <div id="underNav">
-        <img src="https://exchanger.gg/assets/images/overlay-1.svg" , style="width: 100%; margin-top: 600px;">
-    </div>
+  <div class="main-container">
+
     <div id="search_page">
         <h1>What would you like to cook?</h1>
         <div>
@@ -335,7 +336,7 @@ function addReview(id)
         document.getElementById("results").style.overflow = "hidden";
         document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
         var content = document.getElementById("searchBar").value;
-        fetch("http://103.155.92.182:8086/api/search/", {
+        fetch("https://recipies.duckdns.org/api/search/", {
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
@@ -352,7 +353,7 @@ function addReview(id)
                     Data.forEach((v) => {
                         var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
                         recipies[instruction_id] = [v.instructions, v.ingredients, v.title]
-                        html = html + 
+                        html = html + `
                             <div class="result">
                                 <b>${v.title}</b>
                                 <p>${v.ingredients.replaceAll("|", "\n")}</p>
@@ -362,6 +363,7 @@ function addReview(id)
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 </svg> Favourite</button>        
                             </div>
+                        `
                     });
                     document.getElementById("results").innerHTML = html;
                 } else {
