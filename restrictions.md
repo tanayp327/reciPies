@@ -229,8 +229,8 @@
     <div id="search_page">
         <h1>Select your dietary restriction:</h1>
         <div>
-            <form action="/action_page.php">
-                <select name="cars" id="cars">
+            <form>
+                <select name="restrictions" id="restrictions">
                     <option value="Gluten Free">Gluten Free</option>
                     <option value="Vegan">Vegan</option>
                     <option value="Vegetarian">Vegetarian</option>
@@ -264,6 +264,7 @@
     function return_to_search() {
         document.getElementById("search_page").style["display"] = "flex";
         document.getElementById("instructions").style.display = "none";
+
     };
 
     function open_instructions(object) {
@@ -285,7 +286,7 @@
     document.getElementById("searchButton").addEventListener("click", () => {
         document.getElementById("results").style.overflow = "hidden";
         document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
-        var content = document.getElementById("searchBar").value;
+        var content = document.getElementById("restrictions").value;
         fetch("https://recipies.duckdns.org/api/search/", {
             "method": "POST",
             "headers": {
