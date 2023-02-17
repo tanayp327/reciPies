@@ -1,35 +1,98 @@
 <style>
-    body {
-    font-family: "Open Sans", sans-serif;
-    background-color: #f6f6ef;
-    }
-    body {
-    font-family: "Open Sans", sans-serif;
-    background-color: #f6f6ef;
-    }
-    .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 10px auto;
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    }
-    .container {
-    position: relative;
-    text-align: center;
-    color: black;
-    }
-    .bottom-right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-    background-color: #ffffff;
-    }
-</style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f6f6ef;
+      }
+      .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      header {
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          font-size: 20px;
+          display: flex;
+          justify-content: center;
+          align: center;
+          text-align: center;
+          width: 1400px;
+          height: 75px;
+          position: absolute;
+          top: 0px;
+        }
+        header a {
+          color: #fff;
+          text-decoration: none;
+          margin: 0 10px;
+          align: center;
+          font-size: 16px;
+          padding: 10px;
+        }
+        header a:hover {
+          text-decoration: underline;
+        }
+        header h1 {
+          font-size: 24px;
+          margin: 0;
+          padding: 10px;
+        }
+        header h2 {
+          font-size: 24px;
+          margin: 0;
+          padding: 10px;
+        }
+      .login-container {
+        background-color: #2E2E2E;
+        padding: 20px;
+        border-radius: 10px;
+        height: 300px;
+        width: 400px;
+        align: auto;
+        text-align: center;
+        box-shadow: 0px 0px 10px 0px #ccc;
+        color: white;
+      }
+      form {
+        margin-top: 10px;
+      }
+      input {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        background-color: #f4f4f4;
+        color: #444;
+        font-family: "Poppins", sans-serif;
+        box-shadow: 0px 2px 4px #888888;
+      }
+      button {
+        width: 100%;
+        background-color: #0070f3;
+        color: #fff;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+      }
+      button:hover {
+        background-color: #3066be;
+      }
+      .signup-link a {
+        color: #0070f3;
+        text-align: center;
+        display: block;
+        font-family: "Poppins", sans-serif;
+        text: 19px;
+      }
+    </style>
 
 
 <body>

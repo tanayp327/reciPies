@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -103,16 +102,6 @@
     </style>
   </head>
 
-  <header>
-    <table>
-      <tr>
-        <td><a href="/index">Home</a></td>
-        <td><a href="/restrictions">Restrictions</a></td>
-        <td><a href="/reviews">Reviews</a></td>
-        <td><a href="/login">Login</a></td>
-      </tr>
-    </table>
-    </header>
   <body>
     <div class="main-container">
       <div class="login-container">
