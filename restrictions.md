@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <head>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -72,6 +71,7 @@
       }
     </style>
   </head>
+<<<<<<< HEAD:restrictions.html
   <header>
     <table>
       <tr>
@@ -83,6 +83,8 @@
       </tr>
     </table>
 </header>
+=======
+>>>>>>> 365d51743e409440beee7b020c99e8f6a0afc1aa:restrictions.md
   <body>
     <div class="dropdown">
       <button class="dropdown-button">Select Options</button>
