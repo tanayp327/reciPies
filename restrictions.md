@@ -71,20 +71,6 @@
       }
     </style>
   </head>
-<<<<<<< HEAD:restrictions.html
-  <header>
-    <table>
-      <tr>
-        <td><a href="/index">Home</a></td>
-        <td><a href="/restrictions">Restrictions</a></td>
-        <td><a href="/reviews">Reviews</a></td>
-        <td><a href="/login">Login</a></td>
-        <td><a href="/savedfavorites">Favorites</a></td>
-      </tr>
-    </table>
-</header>
-=======
->>>>>>> 365d51743e409440beee7b020c99e8f6a0afc1aa:restrictions.md
   <body>
     <div class="dropdown">
       <button class="dropdown-button">Select Options</button>

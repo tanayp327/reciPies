@@ -194,7 +194,6 @@
             gap: 5px;
             margin-top: 10px;
         }
-        
         #nav {
             position: fixed;
             height: 100px;
@@ -228,23 +227,8 @@
         }
     </style>
 </head>
-<<<<<<< HEAD:reviews.html
-<header>
-  <table>
-    <tr>
-      <td><a href="/index">Home</a></td>
-      <td><a href="/restrictions">Restrictions</a></td>
-      <td><a href="/reviews">Reviews</a></td>
-      <td><a href="/login">Login</a></td>
-      <td><a href="/savedfavorites">Favorites</a></td>
-    </tr>
-  </table>
-</header>
-=======
->>>>>>> 365d51743e409440beee7b020c99e8f6a0afc1aa:reviews.md
 <body>
   <div class="main-container">
-
     <div id="search_page">
         <h1>What would you like to cook?</h1>
         <div>
@@ -275,7 +259,7 @@
         <b>Comments: </b>
         <p id="comments"></p>
     </div> -->
-    <div id="review">
+    <div id="instructions">
         <h2>Leave a Comment & Rating</h2>
         <div>
             <input id="rating" type="text" placeholder="Rate out of 10">
@@ -288,7 +272,6 @@
         <div id="results">
         </div>
     </div>
-</body>
 <script>
     var logged_in = false;
     var recipies = {};
@@ -391,5 +374,3 @@ function addReview(id)
         })
     })
 </script>
-
-</html>
