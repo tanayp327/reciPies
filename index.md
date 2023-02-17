@@ -98,11 +98,11 @@
 <body>
 
 <div class="container">
-  <img src="/images/OneSkilletChickenwithButteryOrzo.png" alt="OneSkilletChickenwithButteryOrzo" style="width:100%;">
+  <img src="/reciPies/images/OneSkilletChickenwithButteryOrzo.png" alt="OneSkilletChickenwithButteryOrzo" style="width:100%;">
   <div class="bottom-right">One Skillet Chicken with Buttery Orzo</div>
 </div>
 <div class="container">
-  <img src="/images/BakedStuffedLobster.png" alt="BakedStuffedLobster" style="width:100%;">
+  <img src="/reciPies/images/BakedStuffedLobster.png" alt="BakedStuffedLobster" style="width:100%;">
   <div class="bottom-right">Baked Stuffed Lobster</div>
 </div>
 
