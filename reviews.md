@@ -306,8 +306,7 @@
         elem = document.getElementById('instructions');
         elem.innerHTML = res.instructions;
     }
-    function addReview(id)
-    {
+    function addReview(id) {
         let msg = "";
         debug(msg);
         msg = "You are in addReview function";
