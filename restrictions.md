@@ -220,110 +220,136 @@
             justify-content: center;
             align-items: center;
         }
+
+.dropdown-check-list {
+  display: inline-block;
+}
+
+.dropdown-check-list .anchor {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 50px 5px 10px;
+  border: 1px solid #ccc;
+}
+
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+.dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
+
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.dropdown-check-list ul.items li {
+  list-style: none;
+}
+
+.dropdown-check-list.visible .anchor {
+  color: #0094ff;
+}
+
+.dropdown-check-list.visible .items {
+  display: block;
+}
+
+
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 
 <body>
-  <div class="main-container">
-
+  <div class="main-container" id="recipieapp">
     <div id="search_page">
-        <h1>Select your dietary restriction:</h1>
+        <h1>Select your dietary restrictions:</h1>
         <div>
             <form>
-                <select name="restrictions" id="restrictions">
-                    <option value="Gluten Free">Gluten Free</option>
-                    <option value="Vegan">Vegan</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Sugar Free">Sugar Free</option>
+                <!-- <div id="list1" class="dropdown-check-list" tabindex="100">
+                    <span class="anchor">Select Restrictions</span>
+                    <ul class="items">
+                        <li><input type="checkbox" value="Vegan" v-model="restrictions"/>Vegan </li>
+                        <li><input type="checkbox" value="Vegetarian" v-model="restrictions"/>Vegetarian</li>
+                        <li><input type="checkbox" v-model="restrictions"/>Gluten-Free </li>
+                        <li><input type="checkbox" v-model="restrictions"/>Egg-Free </li>
+                        <li><input type="checkbox" v-model="restrictions"/>Dairy-Free </li>
+                        <li><input type="checkbox" v-model="restrictions"/>Soy-Free </li>
+                        <li><input type="checkbox" v-model="restrictions"/>Tree-Nut-Free</li>
+                        <li><input type="checkbox" v-model="restrictions"/>Peanut-Free</li>
+                        <li><input type="checkbox" v-model="restrictions"/>Sugar-Free</li>
+                        <li><input type="checkbox" v-model="restrictions"/>Kosher</li>
+                        <li><input type="checkbox" v-model="restrictions"/>Keto</li>
+                    </ul>
+                </div> -->
+                <select multiple type="checkbox" v-model="restrictions">
+                <option>Vegan </option>
+                <option>Vegetarian</option>
+                <option>Gluten-Free </option>
                 </select>
+
                 <br><br>
-                <button id="searchButton">Search</button>
+                <button v-on:click="searchIt" id="searchButton">Submit</button>
             </form>
         </div>
         <br>
-        <div id="results">
-
-        </div>
+        Ingredients: 
+        {% raw %}
+        <div id="results"> {{restrictions}}</div>
+        {% endraw %}
     </div>
     <div id="instructions">
-        <button onclick="return_to_search();">Return To Search</button>
-        <h1>Instructions</h1>
-        <br>
-        <b>You will need: </b>
-        <p id="youWillNeed"></p>
-        <br>
-        <b>Method: </b>
-        <p id="method"></p>
     </div>
-    </div>
+  </div>
 </body>
 <script>
-    var logged_in = false;
-    var recipies = {};
 
-    function return_to_search() {
-        document.getElementById("search_page").style["display"] = "flex";
-        document.getElementById("instructions").style.display = "none";
+var app = new Vue({
+    el: '#recipieapp',
+    data: {
+        restrictions: []
+    },
+    methods: {
+        searchIt: function(){
+            alert('will search for:' + this.restrictions)
 
-    };
-
-    function open_instructions(object) {
-        var instructions = recipies[object];
-        document.getElementById("search_page").style["display"] = "none";
-        document.getElementById("instructions").style.display = "flex";
-        document.getElementById("youWillNeed").innerHTML = instructions[1];
-        document.getElementById("method").innerHTML = instructions[0];
-    };
-
-    function favourite_recipe() {
-        if (!logged_in) {
-            alert("You must be logged in!")
-        } else {
-
-        };
+            fetch("https://recipies.duckdns.org/api/dietsearch/", {
+                "method": "POST",
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "body": JSON.stringify({
+                    "restrictions": this.restrictions
+                })
+            }).then(Response => {
+                alert("Hurray!")
+            })
+        }
     }
-
-    document.getElementById("searchButton").addEventListener("click", () => {
-        document.getElementById("results").style.overflow = "hidden";
-        document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
-        var content = document.getElementById("restrictions").value;
-        fetch("https://recipies.duckdns.org/api/search/", {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                "item": content
-            })
-        }).then(Response => {
-            document.getElementById("results").style.overflow = "auto";
-            recipies = {};
-            Response.json().then(Data => {
-                if (Data.length > 0) {
-                    var html = ``;
-                    Data.forEach((v) => {
-                        var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
-                        recipies[instruction_id] = [v.instructions, v.ingredients, v.title]
-                        html = html + `
-                            <div class="result">
-                                <b>${v.title}</b>
-                                <p>${v.ingredients.replaceAll("|", "\n")}</p>
-                                <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
-                                <button onclick="favourite_recipe('${instruction_id}');" id="favouriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg> Favourite</button>
-                            </div>
-                        `
-                    });
-                    document.getElementById("results").innerHTML = html;
-                } else {
-                    document.getElementById("results").innerHTML = "We found no items for this query!";
-                }
-            }).catch(E => {
-                document.getElementById("results").innerHTML = "We found no items for this query!";
-            })
-        }).catch(E => {
-            document.getElementById("results").innerHTML = "We found no items for this query!";
-        })
-    })
+});
+<!-- var checkList = document.getElementById('list1'); -->
+<!-- checkList.getElementsByClassName('anchor')[0].onclick = function(evt) { -->
+  <!-- if (checkList.classList.contains('visible')) -->
+    <!-- checkList.classList.remove('visible'); -->
+  <!-- else -->
+    <!-- checkList.classList.add('visible'); -->
+<!-- } -->
 </script>
