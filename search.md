@@ -253,74 +253,69 @@
     var recipies = {};
 
     function return_to_search() {
-        document.getElementById("search_page").style["display"] = "flex";
-        document.getElementById("instructions").style.display = "none";
-    };
+    document.getElementById("search_page").style["display"] = "flex";
+    document.getElementById("instructions").style.display = "none";
+};
 
-    function open_instructions(object) {
-        var instructions = recipies[object];
-        document.getElementById("search_page").style["display"] = "none";
-        document.getElementById("instructions").style.display = "flex";
-        document.getElementById("youWillNeed").innerHTML = instructions[1];
-        document.getElementById("method").innerHTML = instructions[0];
-    };
+function open_instructions(object) {
+    var instructions = recipies[object];
+    document.getElementById("search_page").style["display"] = "none";
+    document.getElementById("instructions").style.display = "flex";
+    document.getElementById("youWillNeed").innerHTML = instructions[1];
+    document.getElementById("method").innerHTML = instructions[0];
+};
 
-    function favorite_recipe(id) {
-        if (!id) {
-            alert("Error: recipe ID not provided!")
-            return;
-        }
+function favorite_recipe(id) {
+    if (!id) {
+        alert("Error: recipe ID not provided!")
+        return;
+    }
 
-        var recipe = recipies[id];
-        var title = recipe[2];
-        var ingredients = recipe[1];
-        var instructions = recipe[0];
+    var recipe = recipies[id];
+    var title = recipe[2];
+    var ingredients = recipe[1];
+    var instructions = recipe[0];
 
-        fetch("http://192.168.7.177:8086/api/favorites/favorites", {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                "title": title,
-                "ingredients": ingredients,
-                "instructions": instructions
-            })
-        }).then(Response => {
-            Response.json().then(Data => {
-                if (Data.status == "success") {
-                    alert("Recipe added to favorites!");
-                } else {
-                    alert("Error: " + Data.message);
-                }
-            }).catch(E => {
-                alert("Error: unable to add recipe to favorites!")
-            })
+    fetch("http://192.168.7.177:8086/api/favorites/favorites", {
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "body": JSON.stringify({
+            "title": title,
+            "ingredients": ingredients,
+            "instructions": instructions
+        })
+    }).then(Response => {
+        Response.json().then(Data => {
         }).catch(E => {
             alert("Error: unable to add recipe to favorites!")
         })
-    }
+    }).catch(E => {
+        alert("Error: unable to add recipe to favorites!")
+    })
+}
 
-    document.getElementById("searchButton").addEventListener("click", () => {
-        document.getElementById("results").style.overflow = "hidden";
-        document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
-        var content = document.getElementById("searchBar").value;
-        fetch("https://recipies.duckdns.org/api/search/", {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                "item": content
-            })
-        }).then(Response => {
-            document.getElementById("results").style.overflow = "auto";
-            recipies = {};
-            Response.json().then(Data => {
-                if (Data.length > 0) {
-                    var html = ``;
-                    Data.forEach((v) => {
-                        var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
+document.getElementById("searchButton").addEventListener("click", () => {
+    document.getElementById("results").style.overflow = "hidden";
+    document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    var content = document.getElementById("searchBar").value;
+    fetch("https://recipies.duckdns.org/api/search/", {
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "body": JSON.stringify({
+            "item": content
+        })
+    }).then(Response => {
+        document.getElementById("results").style.overflow = "auto";
+        recipies = {};
+        Response.json().then(Data => {
+            if (Data.length > 0) {
+                var html = ``;
+                Data.forEach((v) => {
+                    var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
                         recipies[instruction_id] = [v.instructions, v.ingredients, v.title]
                         html = html + `
                             <div class="result">
@@ -344,4 +339,4 @@
             document.getElementById("results").innerHTML = "We found no items for this query!";
         })
     })
-</script>
+</script> 
