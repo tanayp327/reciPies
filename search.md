@@ -176,7 +176,7 @@
             gap: 10px;
         }
         
-        #favouriteButton {
+        #favoriteButton {
             background-color: yellow;
             color: black;
             display: flex;
@@ -250,7 +250,6 @@
     </div>
 </body>
 <script>
-    var logged_in = false;
     var recipies = {};
 
     function return_to_search() {
@@ -266,12 +265,40 @@
         document.getElementById("method").innerHTML = instructions[0];
     };
 
-    function favourite_recipe() {
-        if (!logged_in) {
-            alert("You must be logged in!")
-        } else {
+    function favorite_recipe(id) {
+        if (!id) {
+            alert("Error: recipe ID not provided!")
+            return;
+        }
 
-        };
+        var recipe = recipies[id];
+        var title = recipe[2];
+        var ingredients = recipe[1];
+        var instructions = recipe[0];
+
+        fetch("http://192.168.7.177:8086/api/favorites/favorites", {
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "body": JSON.stringify({
+                "title": title,
+                "ingredients": ingredients,
+                "instructions": instructions
+            })
+        }).then(Response => {
+            Response.json().then(Data => {
+                if (Data.status == "success") {
+                    alert("Recipe added to favorites!");
+                } else {
+                    alert("Error: " + Data.message);
+                }
+            }).catch(E => {
+                alert("Error: unable to add recipe to favorites!")
+            })
+        }).catch(E => {
+            alert("Error: unable to add recipe to favorites!")
+        })
     }
 
     document.getElementById("searchButton").addEventListener("click", () => {
@@ -300,9 +327,9 @@
                                 <b>${v.title}</b>
                                 <p>${v.ingredients.replaceAll("|", "\n")}</p>
                                 <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
-                                <button onclick="favourite_recipe('${instruction_id}');" id="favouriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <button onclick="favorite_recipe('${instruction_id}');" id="favoriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg> Favourite</button>
+</svg> favorite</button>
                             </div>
                         `
                     });
