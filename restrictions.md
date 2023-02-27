@@ -322,7 +322,8 @@
         <br>
         Currently Selected Restrictions: 
         {% raw %}
-        <div id="results"> {{restrictions}}</div>
+        <div id="results"> {{ restrictions }}</div>
+        <div> {{ recipes }} </div>
         {% endraw %}
     </div>
     <div id="instructions">
@@ -334,23 +335,30 @@
 var app = new Vue({
     el: '#recipieapp',
     data: {
-        restrictions: []
+        restrictions: [],
+        recipes: ""
     },
     methods: {
         searchIt: function(){
             alert('will search for:' + this.restrictions)
 
-            fetch("https://recipies.duckdns.org/api/dietsearch/", {
+            <!-- fetch("https://recipies.duckdns.org/api/dietsearch/", { -->
+            fetch("http://192.168.86.243:8086/api/dietsearch/", {
                 "method": "POST",
                 "headers": {
                     "content-type": "application/json"
                 },
                 "body": JSON.stringify({
-                    "restrictions": this.restrictions
-                })
-            }).then(Response => {
-                alert("Hurray!")
+                    "item": this.restrictions
+                }),
             })
+            .then((response) => response.json())
+            .then((info) => 
+                this.recipes = info
+                )
+            .catch((error) => {
+                console.error("Error:", error);
+            });
         }
     }
 });
