@@ -282,6 +282,7 @@
   <div class="main-container" id="recipieapp">
     <div id="search_page">
         <h1>Select your dietary restrictions:</h1>
+        <h5>(To select multiple restrictions hold control while clicking options)</h5>
         <div>
             <form>
                 <!-- <div id="list1" class="dropdown-check-list" tabindex="100">
@@ -301,9 +302,17 @@
                     </ul>
                 </div> -->
                 <select multiple type="checkbox" v-model="restrictions">
-                <option>Vegan </option>
-                <option>Vegetarian</option>
-                <option>Gluten-Free </option>
+                <option>vegan </option>
+                <option>vegetarian </option>
+                <option>gluten-free </option>
+                <option>egg-free </option>
+                <option>dairy-free </option>
+                <option>soy-free </option>
+                <option>tree-nut-free </option>
+                <option>peanut-free </option>
+                <option>low-sugar </option>
+                <option>kosher </option>
+                <option>keto-friendly </option>
                 </select>
 
                 <br><br>
@@ -311,9 +320,10 @@
             </form>
         </div>
         <br>
-        Ingredients: 
+        Currently Selected Restrictions: 
         {% raw %}
-        <div id="results"> {{restrictions}}</div>
+        <div id="results"> {{ restrictions }}</div>
+        <div> {{ recipes }} </div>
         {% endraw %}
     </div>
     <div id="instructions">
@@ -325,23 +335,30 @@
 var app = new Vue({
     el: '#recipieapp',
     data: {
-        restrictions: []
+        restrictions: [],
+        recipes: ""
     },
     methods: {
         searchIt: function(){
             alert('will search for:' + this.restrictions)
 
-            fetch("https://recipies.duckdns.org/api/dietsearch/", {
+            <!-- fetch("https://recipies.duckdns.org/api/dietsearch/", { -->
+            fetch("http://192.168.86.243:8086/api/dietsearch/", {
                 "method": "POST",
                 "headers": {
                     "content-type": "application/json"
                 },
                 "body": JSON.stringify({
-                    "restrictions": this.restrictions
-                })
-            }).then(Response => {
-                alert("Hurray!")
+                    "item": this.restrictions
+                }),
             })
+            .then((response) => response.json())
+            .then((info) => 
+                this.recipes = info
+                )
+            .catch((error) => {
+                console.error("Error:", error);
+            });
         }
     }
 });
