@@ -15,16 +15,14 @@
             height: 100vh;
             margin: 0px;
             padding: 0px;
-        }
-        
+        }        
         .result {
             border-radius: 12px;
             border: 1px solid black;
             padding: 20px;
             max-width: 300px;
             flex-shrink: 0;
-        }
-        
+        }        
         input {
             background: black;
             border: 2px solid transparent;
@@ -36,26 +34,22 @@
             padding-bottom: 5px;
             color: #fff;
             transition: 0.2s;
-        }
-        
+        }       
         input:focus {
             background-color: #fff;
             color: black;
             border: 2px solid black;
-        }
-        
+        }        
         .lds-roller {
             display: inline-block;
             position: relative;
             width: 80px;
             height: 80px;
-        }
-        
+        }        
         .lds-roller div {
             animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
             transform-origin: 40px 40px;
-        }
-        
+        }        
         .lds-roller div:after {
             content: " ";
             display: block;
@@ -65,44 +59,35 @@
             border-radius: 50%;
             background: black;
             margin: -4px 0 0 -4px;
-        }
-        
+        }        
         .lds-roller div:nth-child(1) {
             animation-delay: -0.036s;
-        }
-        
+        }        
         .lds-roller div:nth-child(1):after {
             top: 63px;
             left: 63px;
-        }
-        
+        }        
         .lds-roller div:nth-child(2) {
             animation-delay: -0.072s;
-        }
-        
+        }        
         .lds-roller div:nth-child(2):after {
             top: 68px;
             left: 56px;
-        }
-        
+        }        
         .lds-roller div:nth-child(3) {
             animation-delay: -0.108s;
-        }
-        
+        }       
         .lds-roller div:nth-child(3):after {
             top: 71px;
             left: 48px;
         }
-        
         .lds-roller div:nth-child(4) {
             animation-delay: -0.144s;
         }
-        
         .lds-roller div:nth-child(4):after {
             top: 72px;
             left: 40px;
         }
-        
         .lds-roller div:nth-child(5) {
             animation-delay: -0.18s;
         }
@@ -249,6 +234,7 @@
     </div>
     </div>
 </body>
+
 <script>
     var recipies = {};
 
@@ -275,26 +261,26 @@ function favorite_recipe(id) {
     var title = recipe[2];
     var ingredients = recipe[1];
     var instructions = recipe[0];
+    fetch("http://127.0.0.1:8086/api/favorites/favorites", {
+         "method": "POST",
+         "headers": {
+             "content-type": "application/json"
+         },
+         "body": JSON.stringify({
+             "title": title,
+             "ingredients": ingredients,
+             "instructions": instructions
+         })
+     }).then(Response => {
+         Response.json().then(Data => {
+         }).catch(E => {
+             alert("Error: unable to add recipe to favorites!")
+         })
+         }).catch(E => {
+         alert("Error: unable to add recipe to favorites!")
+     })
+ }
 
-    fetch("http://192.168.7.177:8086/api/favorites/favorites", {
-        "method": "POST",
-        "headers": {
-            "content-type": "application/json"
-        },
-        "body": JSON.stringify({
-            "title": title,
-            "ingredients": ingredients,
-            "instructions": instructions
-        })
-    }).then(Response => {
-        Response.json().then(Data => {
-        }).catch(E => {
-            alert("Error: unable to add recipe to favorites!")
-        })
-    }).catch(E => {
-        alert("Error: unable to add recipe to favorites!")
-    })
-}
 
 document.getElementById("searchButton").addEventListener("click", () => {
     document.getElementById("results").style.overflow = "hidden";
