@@ -252,6 +252,7 @@
     const resultContainer = document.getElementById("result");
     // prepare URL's to allow easy switch from deployment and localhost
     //const url = "http://localhost:8086/api/users"
+    // const url = "https://recipies.duckdns.org/api/users"
     const url = "http://127.0.0.1:8086/api/users"
     //const url = "https://flask.nighthawkcodingsociety.com/api/users"
     const create_fetch = url + '/create';
