@@ -252,7 +252,8 @@
     const resultContainer = document.getElementById("result");
     // prepare URL's to allow easy switch from deployment and localhost
     //const url = "http://localhost:8086/api/users"
-    const url = "https://recipies.duckdns.org/api/users"
+    // const url = "https://recipies.duckdns.org/api/users"
+    const url = "http://127.0.0.1:8086/api/users/"
     //const url = "https://flask.nighthawkcodingsociety.com/api/users"
     const create_fetch = url + '/create';
     const read_fetch = url + '/';
@@ -412,7 +413,7 @@
         var title = recipe[2];
         var ingredients = recipe[1];
         var instructions = recipe[0];
-        fetch("https://recipies.duckdns.org/api/favorites/favorites", {
+        fetch("http://192.168.7.177:8086/api/favorites/favorites", {
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
