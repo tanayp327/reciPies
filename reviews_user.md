@@ -278,7 +278,7 @@
             if (response.status !== 200) {
                 const errorMsg = 'Database read error: ' + response.status;
                 console.log(errorMsg);
-                alert(errorMsg);
+                alert(response.status);
                 // const tr = document.createElement("tr");
                 // const td = document.createElement("td");
                 // td.innerHTML = errorMsg;
@@ -325,9 +325,9 @@
         });
     }
     function create_user(){
-        alert("You are in create_user function..add to DB");
-        alert(document.getElementById("recipe").value);
-        alert(document.getElementById("name").value);
+        // alert("You are in create_user function..add to DB");
+        // alert(document.getElementById("recipe").value);
+        // alert(document.getElementById("name").value);
         const body = {
             uid: document.getElementById("name").value,
             rname: document.getElementById("recipe").value,
@@ -352,7 +352,7 @@
         .then(response => {
             // trap error response from Web API
             if (response.status !== 200) {
-            const errorMsg = 'Database create error: ' + response.status;
+            const errorMsg = 'Invalid Input - Database create error: ' + response.status;
             console.log(errorMsg);
             alert(errorMsg);
             // const tr = document.createElement("tr");
@@ -432,21 +432,21 @@
         })
     };
     function addReview(id, name) {
-        alert("You are in addReview function");
+        // alert("You are in addReview function");
         recipe.value = name;
         document.getElementById("search_page").style["display"] = "none";
         document.getElementById("review_page").style["display"] = "flex";
         inst_Id = id;
-        alert(inst_Id);
-        alert(name);
+        // alert(inst_Id);
+        // alert(name);
         context = this.context;
     }
     document.getElementById("searchButton").addEventListener("click", () => {
-        alert("seach button click");
+        // alert("seach button click");
         document.getElementById("results").style.overflow = "hidden";
         document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
         var content = document.getElementById("searchBar").value;
-        alert("b4 fetching search results");
+        // alert("b4 fetching search results");
         // fetch("https://recipies.duckdns.org/api/search/", {
         fetch("http://127.0.0.1:8086/api/search/", {
             "method": "POST",
@@ -457,7 +457,7 @@
                 "item": content
             })
         }).then(Response => {
-            alert("after fetching search results..in response");
+            // alert("after fetching search results..in response");
             document.getElementById("results").style.overflow = "auto";
             recipies = {};
             Response.json().then(Data => {
