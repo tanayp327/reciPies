@@ -302,17 +302,17 @@
                     </ul>
                 </div> -->
                 <select multiple type="checkbox" v-model="restrictions">
-                <option>Vegan </option>
-                <option>Vegetarian</option>
-                <option>Gluten-Free </option>
-                <option>Egg-Free </option>
-                <option>Dairy-Free </option>
-                <option>Soy-Free </option>
-                <option>Tree-Nut-Free </option>
-                <option>Peanut-Free </option>
-                <option>Sugar-Free </option>
-                <option>Kosher </option>
-                <option>Keto </option>
+                <option>vegan </option>
+                <option>vegetarian </option>
+                <option>gluten-free </option>
+                <option>egg-free </option>
+                <option>dairy-free </option>
+                <option>soy-free </option>
+                <option>tree-nut-free </option>
+                <option>peanut-free </option>
+                <option>low-sugar </option>
+                <option>kosher </option>
+                <option>keto-friendly </option>
                 </select>
 
                 <br><br>
