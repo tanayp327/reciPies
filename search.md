@@ -1,41 +1,3 @@
-<!DOCTYPE html>
-<html lang="en-US">
-
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=af5ed787c74e4d188ed94f5ae27012fbd84e1ee8">
-
-<!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>ReciPies | Find the Recipe for You</title>
-<meta name="generator" content="Jekyll v3.9.3" />
-<meta property="og:title" content="ReciPies" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Find the Recipe for You" />
-<meta property="og:description" content="Find the Recipe for You" />
-<link rel="canonical" href="http://localhost:4000/search.html" />
-<meta property="og:url" content="http://localhost:4000/search.html" />
-<meta property="og:site_name" content="ReciPies" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ReciPies" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Find the Recipe for You","headline":"ReciPies","url":"http://localhost:4000/search.html"}</script>
-<!-- End Jekyll SEO tag -->
-
-    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
-
-<!-- Setup Google Analytics -->
-
-
-
-<!-- You can set your favicon here -->
-<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
-
-<!-- end custom head snippets -->
-
-  </head>
   <style>
       body {
         font-family: "Open Sans", sans-serif;
@@ -82,42 +44,6 @@
   }
   </style>
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          
-
-<!--         This one is for github pages  -->
-        <table>
-          <tr>
-              <td><a href="/reciPies/">Home</a></td>
-              <td><a href="/reciPies/login.html">Login</a></td>
-              <td><a href="/reciPies/search.html">Search</a></td>
-              <td><a href="/reciPies/restrictions.html">Dietary Restrictions</a></td>
-              <td><a href="/reciPies/reviews_user.html">Recipe Reviews</a></td>
-              <td><a href="/savedfavorites.html"></a></td>
-          </tr>
-        </table> 
-          <h1 id="project_title"><a href="/reciPies/">ReciPies</a></h1>
-        </header>
-
-<!--         This one is for running locally -->
-        
-        <!-- <table>
-          <tr>
-            <td><a href="/">Home</a></td>
-            <td><a href="/login">Login</a></td>
-            <td><a href="/search">Search</a></td>
-            <td><a href="/restrictions">Dietary Restrictions</a></td>
-            <td><a href="/reviews_user">Recipe Reviews</a></td>
-            <td><a href="/savedfavorites">Saved Favorites</a></td>
-          </tr>
-        </table> 
-          <h1 id="project_title"><a href="/">ReciPies</a></h1>
-        </header>
-    </div> -->
-
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
@@ -348,7 +274,6 @@
 
 <body>
   <div class="main-container">
-
     <div id="search_page">
         <h1>What would you like to cook?</h1>
         <div>
@@ -372,6 +297,7 @@
     </div>
     </div>
 </body>
+
 <script>
     var recipies = {};
 
