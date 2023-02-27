@@ -1,7 +1,130 @@
-<head>
-    <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=af5ed787c74e4d188ed94f5ae27012fbd84e1ee8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ReciPies | Find the Recipe for You</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="ReciPies" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Find the Recipe for You" />
+<meta property="og:description" content="Find the Recipe for You" />
+<link rel="canonical" href="http://localhost:4000/search.html" />
+<meta property="og:url" content="http://localhost:4000/search.html" />
+<meta property="og:site_name" content="ReciPies" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ReciPies" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Find the Recipe for You","headline":"ReciPies","url":"http://localhost:4000/search.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <style>
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: #f6f6ef;
+      }
+      .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 10px auto;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      border: 2px solid black;
+      transform: translate(-50%, 0);
+      }
+      #NavBarSearch{
+        border: 8px #0096e6;
+        border-color: #0096e6;
+      }
+      input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      margin: 8px 0;
+      font-size: 16px;
+      }
+  
+      button[type="submit"] {
+      width: 100%;
+      background-color: #0096e6;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      }
+  
+      button[type="submit"]:hover {
+      background-color: #005f9c;
+  }
+  </style>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+
+<!--         This one is for github pages  -->
+        <table>
+          <tr>
+              <td><a href="/reciPies/">Home</a></td>
+              <td><a href="/reciPies/login.html">Login</a></td>
+              <td><a href="/reciPies/search.html">Search</a></td>
+              <td><a href="/reciPies/restrictions.html">Dietary Restrictions</a></td>
+              <td><a href="/reciPies/reviews_user.html">Recipe Reviews</a></td>
+              <td><a href="/savedfavorites.html"></a></td>
+          </tr>
+        </table> 
+          <h1 id="project_title"><a href="/reciPies/">ReciPies</a></h1>
+        </header>
+
+<!--         This one is for running locally -->
+        
+        <!-- <table>
+          <tr>
+            <td><a href="/">Home</a></td>
+            <td><a href="/login">Login</a></td>
+            <td><a href="/search">Search</a></td>
+            <td><a href="/restrictions">Dietary Restrictions</a></td>
+            <td><a href="/reviews_user">Recipe Reviews</a></td>
+            <td><a href="/savedfavorites">Saved Favorites</a></td>
+          </tr>
+        </table> 
+          <h1 id="project_title"><a href="/">ReciPies</a></h1>
+        </header>
+    </div> -->
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>recipies</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -15,14 +138,16 @@
             height: 100vh;
             margin: 0px;
             padding: 0px;
-        }        
+        }
+        
         .result {
             border-radius: 12px;
             border: 1px solid black;
             padding: 20px;
             max-width: 300px;
             flex-shrink: 0;
-        }        
+        }
+        
         input {
             background: black;
             border: 2px solid transparent;
@@ -34,22 +159,26 @@
             padding-bottom: 5px;
             color: #fff;
             transition: 0.2s;
-        }       
+        }
+        
         input:focus {
             background-color: #fff;
             color: black;
             border: 2px solid black;
-        }        
+        }
+        
         .lds-roller {
             display: inline-block;
             position: relative;
             width: 80px;
             height: 80px;
-        }        
+        }
+        
         .lds-roller div {
             animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
             transform-origin: 40px 40px;
-        }        
+        }
+        
         .lds-roller div:after {
             content: " ";
             display: block;
@@ -59,35 +188,44 @@
             border-radius: 50%;
             background: black;
             margin: -4px 0 0 -4px;
-        }        
+        }
+        
         .lds-roller div:nth-child(1) {
             animation-delay: -0.036s;
-        }        
+        }
+        
         .lds-roller div:nth-child(1):after {
             top: 63px;
             left: 63px;
-        }        
+        }
+        
         .lds-roller div:nth-child(2) {
             animation-delay: -0.072s;
-        }        
+        }
+        
         .lds-roller div:nth-child(2):after {
             top: 68px;
             left: 56px;
-        }        
+        }
+        
         .lds-roller div:nth-child(3) {
             animation-delay: -0.108s;
-        }       
+        }
+        
         .lds-roller div:nth-child(3):after {
             top: 71px;
             left: 48px;
         }
+        
         .lds-roller div:nth-child(4) {
             animation-delay: -0.144s;
         }
+        
         .lds-roller div:nth-child(4):after {
             top: 72px;
             left: 40px;
         }
+        
         .lds-roller div:nth-child(5) {
             animation-delay: -0.18s;
         }
@@ -214,10 +352,10 @@
     <div id="search_page">
         <h1>What would you like to cook?</h1>
         <div>
-            <input id="searchBar" type="text" placeholder="Type here">
+            <input id="searchBar" type="text" placeholder="Type here" />
             <button id="searchButton">Search</button>
         </div>
-        <br>
+        <br />
         <div id="results">
 
         </div>
@@ -225,16 +363,15 @@
     <div id="instructions">
         <button onclick="return_to_search();">Return To Search</button>
         <h1>Instructions</h1>
-        <br>
+        <br />
         <b>You will need: </b>
         <p id="youWillNeed"></p>
-        <br>
+        <br />
         <b>Method: </b>
         <p id="method"></p>
     </div>
     </div>
 </body>
-
 <script>
     var recipies = {};
 
@@ -261,32 +398,32 @@ function favorite_recipe(id) {
     var title = recipe[2];
     var ingredients = recipe[1];
     var instructions = recipe[0];
-    fetch("http://127.0.0.1:8086/api/favorites/favorites", {
-         "method": "POST",
-         "headers": {
-             "content-type": "application/json"
-         },
-         "body": JSON.stringify({
-             "title": title,
-             "ingredients": ingredients,
-             "instructions": instructions
-         })
-     }).then(Response => {
-         Response.json().then(Data => {
-         }).catch(E => {
-             alert("Error: unable to add recipe to favorites!")
-         })
-         }).catch(E => {
-         alert("Error: unable to add recipe to favorites!")
-     })
- }
 
+    fetch("http://127.0.0.1:8086/api/favorites/favorites", {
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "body": JSON.stringify({
+            "title": title,
+            "ingredients": ingredients,
+            "instructions": instructions
+        })
+    }).then(Response => {
+        Response.json().then(Data => {
+        }).catch(E => {
+            alert("Error: unable to add recipe to favorites!")
+        })
+    }).catch(E => {
+        alert("Error: unable to add recipe to favorites!")
+    })
+}
 
 document.getElementById("searchButton").addEventListener("click", () => {
     document.getElementById("results").style.overflow = "hidden";
     document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
     var content = document.getElementById("searchBar").value;
-    fetch("https://recipies.duckdns.org/api/search/", {
+    fetch("http://103.155.92.182:8086/api/search/", {
         "method": "POST",
         "headers": {
             "content-type": "application/json"
@@ -325,4 +462,8 @@ document.getElementById("searchButton").addEventListener("click", () => {
             document.getElementById("results").innerHTML = "We found no items for this query!";
         })
     })
-</script> 
+</script>
+
+
+      </section>
+    </div>
