@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <style>
-      
       @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
       body {
         font-family: "Poppins", sans-serif;
@@ -102,18 +101,50 @@
     </style>
   </head>
   <body>
-    <div class="main-container">
-      <div class="login-container">
-        <form>
-          <h2>Login</h2>
-          <input type="text" id="input-field" placeholder="Username" required>
-          <input type="password" id="password-field" placeholder="Password" required>
-          <button type="submit">Submit</button>
-        </form>
-        <div class="signup-link">
-          <a href="signup">Don't have an account? Sign Up here!</a>
-        </div>
+  <div class="main-container">
+    <div class="login-container">
+      <form id="login-form">
+        <h2>Login</h2>
+        <input type="text" id="username-field" placeholder="Username" required>
+        <input type="password" id="password-field" placeholder="Password" required>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="signup-link">
+        <a href="signup">Don't have an account? Sign Up here!</a>
       </div>
     </div>
-  </body>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+
+    form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('username-field').value;
+    const password = document.getElementById('password-field').value;
+
+    fetch("http://127.0.0.1:8086/api/users/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ uid: username, password: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 200) {
+        alert('Login successful!');
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('username', username); // Save the username to local storage
+        window.location.href = '/';
+      } else {
+        alert('Login failed. Please check your username and password.');
+      }
+    })
+    .catch(error => console.error(error));
+  });
+
+</script>
+</body>
 </html>
