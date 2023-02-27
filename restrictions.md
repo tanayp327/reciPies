@@ -282,6 +282,7 @@
   <div class="main-container" id="recipieapp">
     <div id="search_page">
         <h1>Select your dietary restrictions:</h1>
+        <h5>(To select multiple restrictions hold control while clicking options)</h5>
         <div>
             <form>
                 <!-- <div id="list1" class="dropdown-check-list" tabindex="100">
@@ -304,6 +305,14 @@
                 <option>Vegan </option>
                 <option>Vegetarian</option>
                 <option>Gluten-Free </option>
+                <option>Egg-Free </option>
+                <option>Dairy-Free </option>
+                <option>Soy-Free </option>
+                <option>Tree-Nut-Free </option>
+                <option>Peanut-Free </option>
+                <option>Sugar-Free </option>
+                <option>Kosher </option>
+                <option>Keto </option>
                 </select>
 
                 <br><br>
@@ -311,7 +320,7 @@
             </form>
         </div>
         <br>
-        Ingredients: 
+        Currently Selected Restrictions: 
         {% raw %}
         <div id="results"> {{restrictions}}</div>
         {% endraw %}
