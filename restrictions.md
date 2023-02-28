@@ -353,8 +353,8 @@ var app = new Vue({
         searchIt: function(e){
             <!-- alert('will search for:' + this.restrictions) -->
 
-            <!-- fetch("https://recipies.duckdns.org/api/dietsearch/", { -->
-            fetch("http://192.168.86.243:8086/api/dietsearch/", {
+            fetch("https://recipies.duckdns.org/api/dietsearch/", {
+            <!-- fetch("http://192.168.86.243:8086/api/dietsearch/", { -->
                 "method": "POST",
                 "headers": {
                     "content-type": "application/json"
