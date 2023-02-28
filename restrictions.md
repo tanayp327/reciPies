@@ -16,15 +16,13 @@
             margin: 0px;
             padding: 0px;
         }
-        
         .result {
             border-radius: 12px;
             border: 1px solid black;
-            padding: 20px;
-            max-width: 300px;
+            margin: 3px;
+            padding: 10px;
             flex-shrink: 0;
         }
-        
         input {
             background: black;
             border: 2px solid transparent;
@@ -37,25 +35,21 @@
             color: #fff;
             transition: 0.2s;
         }
-        
         input:focus {
             background-color: #fff;
             color: black;
             border: 2px solid black;
         }
-        
         .lds-roller {
             display: inline-block;
             position: relative;
             width: 80px;
             height: 80px;
         }
-        
         .lds-roller div {
             animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
             transform-origin: 40px 40px;
         }
-        
         .lds-roller div:after {
             content: " ";
             display: block;
@@ -314,19 +308,36 @@
                 <option>kosher </option>
                 <option>keto-friendly </option>
                 </select>
-
                 <br><br>
                 <button v-on:click="searchIt" id="searchButton">Submit</button>
             </form>
         </div>
         <br>
-        Currently Selected Restrictions: 
-        {% raw %}
-        <div id="results"> {{ restrictions }}</div>
-        <div> {{ recipes }} </div>
+        <div v-if="restrictions.length">
+            Currently Selected Restrictions: 
+            <div id="results2"> {% raw %}{{ restrictions }}{% endraw %}</div>
+        </div>
+        <div id="results" v-if="recipes.length">
+         Recipes: <br>
+            {% raw %}
+            <div class="result" v-for="result in recipes">
+                <table>
+                    <tr><td>
+                        Title: {{ result.label }}
+                    </td></tr>
+                    <tr><td>
+                        Calories:  {{ result.calories }}
+                    </td></tr>
+                    <tr><td>
+                        Ingredients:  {{ result.ingredients }}
+                    </td></tr>
+                    <tr><td>
+                        Total Time: {{ result.totalTime }}
+                    </td></tr>
+                </table>
+            </div>
         {% endraw %}
-    </div>
-    <div id="instructions">
+        </div>
     </div>
   </div>
 </body>
@@ -339,8 +350,8 @@ var app = new Vue({
         recipes: ""
     },
     methods: {
-        searchIt: function(){
-            alert('will search for:' + this.restrictions)
+        searchIt: function(e){
+            <!-- alert('will search for:' + this.restrictions) -->
 
             <!-- fetch("https://recipies.duckdns.org/api/dietsearch/", { -->
             fetch("http://192.168.86.243:8086/api/dietsearch/", {
@@ -359,14 +370,8 @@ var app = new Vue({
             .catch((error) => {
                 console.error("Error:", error);
             });
+            e.preventDefault();
         }
     }
 });
-<!-- var checkList = document.getElementById('list1'); -->
-<!-- checkList.getElementsByClassName('anchor')[0].onclick = function(evt) { -->
-  <!-- if (checkList.classList.contains('visible')) -->
-    <!-- checkList.classList.remove('visible'); -->
-  <!-- else -->
-    <!-- checkList.classList.add('visible'); -->
-<!-- } -->
 </script>
