@@ -253,7 +253,7 @@
     // prepare URL's to allow easy switch from deployment and localhost
     //const url = "http://localhost:8086/api/users"
     // const url = "https://recipies.duckdns.org/api/users"
-    const url = "http://127.0.0.1:8086/api/users"
+    const url = "https://recipies.duckdns.org/api/users"
     //const url = "https://flask.nighthawkcodingsociety.com/api/users"
     const create_fetch = url + '/create';
     const read_fetch = url + '/';
@@ -449,7 +449,7 @@
         var content = document.getElementById("searchBar").value;
         // alert("b4 fetching search results");
         // fetch("https://recipies.duckdns.org/api/search/", {
-        fetch("http://127.0.0.1:8086/api/search/", {
+        fetch("https://recipies.duckdns.org/api/search/", {
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
