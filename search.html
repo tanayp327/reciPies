@@ -396,7 +396,7 @@ function favorite_recipe(id) {
     var ingredients = recipe[1];
     var instructions = recipe[0];
 
-    fetch("http://192.168.7.177:8086/api/favorites/favorites", {
+    fetch("https://recipies.duckdns.org/api/favorites/favorites", {
         "method": "POST",
         "headers": {
             "content-type": "application/json"
@@ -420,7 +420,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
     document.getElementById("results").style.overflow = "hidden";
     document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
     var content = document.getElementById("searchBar").value;
-    fetch("https://recipies.duckdns.org/api/search/", {
+    fetch("http://103.155.92.182:8086/api/search/", {
         "method": "POST",
         "headers": {
             "content-type": "application/json"
