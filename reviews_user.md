@@ -252,11 +252,13 @@
     const resultContainer = document.getElementById("result");
     // prepare URL's to allow easy switch from deployment and localhost
     //const url = "http://localhost:8086/api/users"
-    // const url = "https://recipies.duckdns.org/api/users"
     const url = "https://recipies.duckdns.org/api/users"
+    // const url = "http://127.0.0.1:8086/api/users"
     //const url = "https://flask.nighthawkcodingsociety.com/api/users"
     const create_fetch = url + '/create';
     const read_fetch = url + '/';
+    const delete_fetch = url + '/delete';  
+    const update_fetch = url + '/update';    
     // Load users on page entry
     read_users();
     // Display User Table, data is fetched from Backend Database
@@ -279,7 +281,7 @@
             if (response.status !== 200) {
                 const errorMsg = 'Database read error: ' + response.status;
                 console.log(errorMsg);
-                alert(response.status);
+                //alert(response.status);
                 // const tr = document.createElement("tr");
                 // const td = document.createElement("td");
                 // td.innerHTML = errorMsg;
@@ -290,22 +292,29 @@
             // valid response will have json data
             response.json().then(data => {
                 console.log(data);
+                resultContainer.innerHTML = ''
                 //Construct Table header
                 const tr = document.createElement("tr");
                 const col1 = document.createElement("td");
                 const col2 = document.createElement("td")
                 const col3 = document.createElement("td");
-                const col4 = document.createElement("td");        
+                const col4 = document.createElement("td");  
+                const col5 = document.createElement("td"); 
+                const col6 = document.createElement("td");                                       
                 // obtain data that is specific to the API
                 col1.innerHTML = "<span style='font-weight:bold'>Recipe Name</span>"; 
                 col2.innerHTML = "<span style='font-weight:bold'>Review</span>";
                 col3.innerHTML = "<span style='font-weight:bold'>Rating</span>"; 
-                col4.innerHTML = "<span style='font-weight:bold'>User Name</span>";         
+                col4.innerHTML = "<span style='font-weight:bold'>User Name</span>";  
+                col5.innerHTML = "<span style='font-weight:bold'>Update</span>";   
+                col6.innerHTML = "<span style='font-weight:bold'>Delete</span>";                     
                 // add HTML to container
                 tr.appendChild(col1);
                 tr.appendChild(col2);
                 tr.appendChild(col3);
-                tr.appendChild(col4);        
+                tr.appendChild(col4);    
+                tr.appendChild(col5);   
+                tr.appendChild(col6);                     
                 resultContainer.appendChild(tr); 
                 //Print Reviews               
                 for (let row in data) {
@@ -376,18 +385,106 @@
         const rname = document.createElement("td");
         const comment = document.createElement("td")
         const rating = document.createElement("td");
-        const uid = document.createElement("td");        
+        const uid = document.createElement("td"); 
+        const update_col = document.createElement("td");
+        const del_col = document.createElement("td");  
+        const update_button = document.createElement('input');       
+        update_button.type = "button";
+        update_button.value = "Update";
+        update_button.onclick = function() {update_review(data.id,data.rname,data.comment,data.rating,data.uid)};
+        const delete_button = document.createElement('input');
+        delete_button.type = "button";
+        delete_button.value = "Delete";
+        delete_button.onclick = function() {delete_review(data.id)};
+        update_col.appendChild(update_button);
+        del_col.appendChild(delete_button); 
         // obtain data that is specific to the API
         rname.innerHTML = data.rname; 
         comment.innerHTML = data.comment;
         rating.innerHTML = data.rating; 
-        uid.innerHTML = data.uid;         
+        uid.innerHTML = data.uid;                
         // add HTML to container
         tr.appendChild(rname);
         tr.appendChild(comment);
         tr.appendChild(rating);
-        tr.appendChild(uid);        
+        tr.appendChild(uid);       
+        tr.appendChild(update_col);    
+        tr.appendChild(del_col);  
         resultContainer.appendChild(tr);
+    }
+    function delete_review(review_id){
+        //alert(review_id);
+        const body = {
+            id: review_id,
+        };
+        const requestOptions = {
+            method: 'DELETE',
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json",
+                'Authorization': 'Bearer my-token',
+            },
+        };             
+        fetch(delete_fetch, requestOptions)
+        .then(response => {
+            // trap error response from Web API
+            if (response.status !== 200) {
+            const errorMsg = 'Invalid Input - Database delete error: ' + response.status;
+            console.log(errorMsg);
+            alert(errorMsg);
+            // const tr = document.createElement("tr");
+            // const td = document.createElement("td");
+            // td.innerHTML = errorMsg;
+            // tr.appendChild(td);
+            // resultContainer.appendChild(tr);
+            return;
+            }
+            // response contains valid result
+            response.json().then(data => {
+                console.log(data);
+                //alert(data);           
+                delete(data);
+                //alert("in delete end- after add_row");
+                resultContainer.innerHTML = ''
+                // Load users on page entry
+                read_users();
+            })
+        })
+    }
+    function update_review(id,rname,comment,rating,uid){
+        //alert(id);
+        document.getElementById("recipe").value = rname;
+        document.getElementById("comment").value = comment;
+        document.getElementById("rating").value = rating; 
+        document.getElementById("uid").value = uid; 
+        const body = {
+            id: id,
+        };
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json",
+                'Authorization': 'Bearer my-token',
+            },
+        };             
+        fetch(update_fetch, requestOptions)
+        .then(response => {
+            // trap error response from Web API
+            if (response.status !== 200) {
+            const errorMsg = 'Invalid Input - Database Update error: ' + response.status;
+            console.log(errorMsg);
+            alert(errorMsg);
+            return;
+            }
+            // response contains valid result
+            response.json().then(data => {
+                console.log(data);
+                //alert(data);                      
+                update_row(data);
+                //alert("in update end- after update_row");
+            })
+        })
     }
     /////////////////////
     function return_to_search() {
@@ -403,34 +500,6 @@
         document.getElementById("review_page").style["display"] = "none";
         document.getElementById("youWillNeed").innerHTML = instructions[1];
         document.getElementById("method").innerHTML = instructions[0];
-    };
-    function favorite_recipe(id) {
-        if (!id) {
-            alert("Error: recipe ID not provided!")
-            return;
-        }
-        var recipe = recipies[id];
-        var title = recipe[2];
-        var ingredients = recipe[1];
-        var instructions = recipe[0];
-        fetch("http://192.168.7.177:8086/api/favorites/favorites", {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                "title": title,
-                "ingredients": ingredients,
-                "instructions": instructions
-            })
-        }).then(Response => {
-            Response.json().then(Data => {
-            }).catch(E => {
-                alert("Error: unable to add recipe to favorites!")
-            })
-        }).catch(E => {
-            alert("Error: unable to add recipe to favorites!")
-        })
     };
     function addReview(id, name) {
         // alert("You are in addReview function");
@@ -448,8 +517,8 @@
         document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
         var content = document.getElementById("searchBar").value;
         // alert("b4 fetching search results");
-        // fetch("https://recipies.duckdns.org/api/search/", {
         fetch("https://recipies.duckdns.org/api/search/", {
+        // fetch("http://127.0.0.1:8086/api/search/", {
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
@@ -473,9 +542,6 @@
                                 <p>${v.ingredients.replaceAll("|", "\n")}</p>
                                 <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
                                 <button onclick="addReview('${instruction_id}', '${v.title}')">Review</button>
-                                <button onclick="favorite_recipe('${instruction_id}');" id="favoriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg> favorite</button>
                             </div>
                         `
                     });
