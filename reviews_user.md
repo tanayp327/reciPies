@@ -253,8 +253,8 @@
     const resultContainer = document.getElementById("result");
     // prepare URL's to allow easy switch from deployment and localhost
     //const url = "http://localhost:8086/api/users"
-    const url = "https://recipies.duckdns.org/api/users"
-    // const url = "http://127.0.0.1:8086/api/users"
+    // const url = "https://recipies.duckdns.org/api/users"
+    const url = "http://192.168.122.48:8086/api/users"
     //const url = "https://flask.nighthawkcodingsociety.com/api/users"
     const create_fetch = url + '/create';
     const read_fetch = url + '/';
@@ -553,34 +553,6 @@
         document.getElementById("youWillNeed").innerHTML = instructions[1];
         document.getElementById("method").innerHTML = instructions[0];
     };
-    function favorite_recipe(id) {
-        if (!id) {
-            alert("Error: recipe ID not provided!")
-            return;
-        }
-        var recipe = recipies[id];
-        var title = recipe[2];
-        var ingredients = recipe[1];
-        var instructions = recipe[0];
-        fetch("http://192.168.7.177:8086/api/favorites/favorites", {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                "title": title,
-                "ingredients": ingredients,
-                "instructions": instructions
-            })
-        }).then(Response => {
-            Response.json().then(Data => {
-            }).catch(E => {
-                alert("Error: unable to add recipe to favorites!")
-            })
-        }).catch(E => {
-            alert("Error: unable to add recipe to favorites!")
-        })
-    };
     function addReview(id, name) {
         // alert("You are in addReview function");
         recipe.value = name;
@@ -597,8 +569,8 @@
         document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
         var content = document.getElementById("searchBar").value;
         // alert("b4 fetching search results");
-        fetch("https://recipies.duckdns.org/api/search", {
-        // fetch("http://127.0.0.1:8086/api/search", {
+        // fetch("https://recipies.duckdns.org/api/search", {
+        fetch("http://192.168.122.48:8086/api/search", {
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
@@ -622,9 +594,6 @@
                                 <p>${v.ingredients.replaceAll("|", "\n")}</p>
                                 <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
                                 <button onclick="addReview('${instruction_id}', '${v.title}')">Review</button>
-                                <button onclick="favorite_recipe('${instruction_id}');" id="favoriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg> favorite</button>
                             </div>
                         `
                     });
@@ -638,7 +607,7 @@
                 document.getElementById("results").innerHTML = "We found no items for this query!";
             })
         }).catch(E => {
-            alert("catch 2");            
+            alert("Our Server seems to be down, please try again later!");
             document.getElementById("results").innerHTML = "We found no items for this query!";
         })
     })
