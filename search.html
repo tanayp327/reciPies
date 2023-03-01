@@ -1,130 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 
-  <head>
-    <meta charset='utf-8'>
+<head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=af5ed787c74e4d188ed94f5ae27012fbd84e1ee8">
-
-<!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>ReciPies | Find the Recipe for You</title>
-<meta name="generator" content="Jekyll v3.9.3" />
-<meta property="og:title" content="ReciPies" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Find the Recipe for You" />
-<meta property="og:description" content="Find the Recipe for You" />
-<link rel="canonical" href="http://localhost:4000/search.html" />
-<meta property="og:url" content="http://localhost:4000/search.html" />
-<meta property="og:site_name" content="ReciPies" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ReciPies" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Find the Recipe for You","headline":"ReciPies","url":"http://localhost:4000/search.html"}</script>
-<!-- End Jekyll SEO tag -->
-
-    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
-
-<!-- Setup Google Analytics -->
-
-
-
-<!-- You can set your favicon here -->
-<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
-
-<!-- end custom head snippets -->
-
-  </head>
-  <style>
-      body {
-        font-family: "Open Sans", sans-serif;
-        background-color: #f6f6ef;
-      }
-      .search-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 10px auto;
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      border: 2px solid black;
-      transform: translate(-50%, 0);
-      }
-      #NavBarSearch{
-        border: 8px #0096e6;
-        border-color: #0096e6;
-      }
-      input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 4px;
-      margin: 8px 0;
-      font-size: 16px;
-      }
-  
-      button[type="submit"] {
-      width: 100%;
-      background-color: #0096e6;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      }
-  
-      button[type="submit"]:hover {
-      background-color: #005f9c;
-  }
-  </style>
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          
-
-<!--         This one is for github pages  -->
-        <table>
-          <tr>
-              <td><a href="/reciPies/">Home</a></td>
-              <td><a href="/reciPies/login.html">Login</a></td>
-              <td><a href="/reciPies/search.html">Search</a></td>
-              <td><a href="/reciPies/restrictions.html">Dietary Restrictions</a></td>
-              <td><a href="/reciPies/reviews_user.html">Recipe Reviews</a></td>
-              <td><a href="/savedfavorites.html"></a></td>
-          </tr>
-        </table> 
-          <h1 id="project_title"><a href="/reciPies/">ReciPies</a></h1>
-        </header>
-
-<!--         This one is for running locally -->
-        
-        <!-- <table>
-          <tr>
-            <td><a href="/">Home</a></td>
-            <td><a href="/login">Login</a></td>
-            <td><a href="/search">Search</a></td>
-            <td><a href="/restrictions">Dietary Restrictions</a></td>
-            <td><a href="/reviews_user">Recipe Reviews</a></td>
-            <td><a href="/savedfavorites">Saved Favorites</a></td>
-          </tr>
-        </table> 
-          <h1 id="project_title"><a href="/">ReciPies</a></h1>
-        </header>
-    </div> -->
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>recipies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         body {
@@ -133,12 +14,18 @@
             align-items: center;
             display: flex;
             flex-direction: column;
+            width: 100vw;
+            height: 100vh;
             margin: 0px;
             padding: 0px;
         }
         
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
         .result {
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid black;
             padding: 20px;
             max-width: 300px;
@@ -149,7 +36,7 @@
             background: black;
             border: 2px solid transparent;
             outline: none;
-            border-radius: 50px;
+            border-radius: 10px;
             padding-left: 10px;
             padding-right: 20px;
             padding-top: 5px;
@@ -272,7 +159,7 @@
             background: black;
             border: 2px solid transparent;
             outline: none;
-            border-radius: 50px;
+            border-radius: 10px;
             padding-left: 20px;
             padding-right: 20px;
             padding-top: 5px;
@@ -295,8 +182,16 @@
             flex-direction: column;
             gap: 10px;
         }
+
+        #recentResults {
+            max-height: 500px;
+            overflow: auto;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
         
-        #favoriteButton {
+        #favouriteButton {
             background-color: yellow;
             color: black;
             display: flex;
@@ -306,15 +201,25 @@
             margin-top: 10px;
         }
         
+        #commentButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            margin-top: 10px;
+        }
+        
         #nav {
             position: fixed;
             height: 100px;
-            width: 100%;
+            width: calc(100% - 50px);
             background-color: black;
             top: 0px;
             left: 0px;
             display: flex;
-            justify-content: center;
+            justify-content: right;
+            padding-right: 50px;
             align-items: center;
         }
         
@@ -330,7 +235,7 @@
             text-align: center;
             max-width: 400px;
             border: 1px solid black;
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 20px;
         }
         
@@ -340,111 +245,339 @@
             justify-content: center;
             align-items: center;
         }
+        
+        #not_auth {
+            display: flex;
+        }
+        
+        #auth {
+            display: none;
+        }
+        
+        .login-button {
+            background-color: white;
+            color: black;
+            font-size: 20px;
+        }
+        
+        #main-page {
+            display: block;
+        }
+        
+        #register-login-page {
+            display: none;
+        }
+        
+        #login_page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 30px;
+            border: 1px solid black;
+            background: black;
+            color: #fff;
+            border-radius: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            transform: scale(1.3);
+        }
+        
+        #register_page {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 30px;
+            border: 1px solid black;
+            background: black;
+            color: #fff;
+            border-radius: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            transform: scale(1.3);
+        }
+        
+        #comments {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 30px;
+            border: 1px solid black;
+            background: black;
+            color: #fff;
+            border-radius: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            transform: scale(1.3);
+        }
     </style>
 </head>
 
 <body>
-  <div class="main-container">
-
-    <div id="search_page">
-        <h1>What would you like to cook?</h1>
-        <div>
-            <input id="searchBar" type="text" placeholder="Type here" />
-            <button id="searchButton">Search</button>
+    <div id="nav">
+        <div id="not_auth">
+            <button class="login-button" onclick="toggle_auth_page(this)">Sign In</button>
         </div>
-        <br />
-        <div id="results">
+        <div id="auth">
 
         </div>
     </div>
-    <div id="instructions">
-        <button onclick="return_to_search();">Return To Search</button>
-        <h1>Instructions</h1>
-        <br />
-        <b>You will need: </b>
-        <p id="youWillNeed"></p>
-        <br />
-        <b>Method: </b>
-        <p id="method"></p>
+    <script>
+        var current_home = true;
+
+        function toggle_auth_page(object) {
+            if (current_home) {
+                object.innerText = "Return Home"
+                current_home = false;
+                document.getElementById('main-page').style.display = 'none';
+                document.getElementById('register-login-page').style.display = 'flex'
+            } else {
+                object.innerText = "Sign In"
+                current_home = true;
+                document.getElementById('register-login-page').style.display = 'none';
+                document.getElementById('main-page').style.display = 'flex'
+            }
+        };
+    </script>
+    <div id="register-login-page">
+        <div id="login_page">
+            <h2>Login</h2>
+            <div>
+                <input style="background-color: #fff; color: black;" type="text" placeholder="Username">
+                <br>
+                <br>
+                <input style="background-color: #fff; color: black;" type="password" placeholder="Password">
+                <br>
+                <br>
+                <button style="width: 100%; background-color: #fff; color: black;">Login</button>
+                <br>
+                <br>
+                <b onclick="document.getElementById('login_page').style.display='none'; document.getElementById('register_page').style.display='flex'" style="color: rgba(255, 255, 255, 0.7); cursor: pointer; font-size: 12px;">Don't have an account?</b>
+            </div>
+            <br>
+        </div>
+
+        <div id="register_page">
+            <h2>Register</h2>
+            <div>
+                <input style="background-color: #fff; color: black;" type="text" placeholder="Username">
+                <br>
+                <br>
+                <input style="background-color: #fff; color: black;" type="password" placeholder="Password">
+                <br>
+                <br>
+                <button style="width: 100%; background-color: #fff; color: black;">Register</button>
+                <br>
+                <br>
+                <b onclick="document.getElementById('register_page').style.display='none'; document.getElementById('login_page').style.display='flex'" style="color: rgba(255, 255, 255, 0.7); cursor: pointer; font-size: 12px;">Already have an account?</b>
+            </div>
+            <br>
+        </div>
     </div>
+    <div id="main-page">
+        <div id="search_page">
+            <h1>What would you like to cook?</h1>
+            <div>
+                <input id="searchBar" type="text" placeholder="Type here">
+                <button id="searchButton">Search</button>
+                <button id="recentSearches" onclick="toggle_recent_view(this);">Recent Searches</button>
+            </div>
+            <br>
+            <div id="recentResults">
+
+            </div>
+            <div id="results">
+
+            </div>
+        </div>
+        <div id="instructions">
+            <button onclick="return_to_search();">Return To Search</button>
+            <h1>Instructions</h1>
+            <br>
+            <b>You will need: </b>
+            <p id="youWillNeed"></p>
+            <br>
+            <b>Method: </b>
+            <p id="method"></p>
+        </div>
+        <div id="comments">
+            <div style="display: flex; gap: 5px;">
+                <input style="background-color: #fff; font-size: 12px; padding: 2.5px; padding-left: 3.5px; color: black;" type="text" placeholder="Comment">
+                <button style="min-width: 100px; width: 100%; background-color: #fff; color: black; font-size: 12px; padding: 2.5px;;">Post</button>
+            </div>
+            <br>
+            <p>Sorry there is currently no comments.</p>
+            <br>
+            <button style="border: 2px solid white;" onclick="return_to_search();">Return To Search</button>
+        </div>
     </div>
 </body>
 <script>
+    var logged_in = false;
     var recipies = {};
 
-    function return_to_search() {
-    document.getElementById("search_page").style["display"] = "flex";
-    document.getElementById("instructions").style.display = "none";
-};
+    var recent_visible = false;
+    
+    function deleteRecent() {
+        document.getElementById("results").innerText = "";
+        document.getElementById("recentResults").style.display = "flex";
+        document.getElementById("results").style.display = "none";
+        document.getElementById("recentResults").style.overflow = "hidden";
+        document.getElementById("recentResults").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+        fetch("https://recipies.duckdns.org/api/search/delete", {
+            "method": "GET"
+        }).then(R => {
+            fetch("https://recipies.duckdns.org/api/search/recently").then(Response => {
+                document.getElementById("recentResults").style.overflow = "auto";
+                recipies = {};
+                Response.json().then(Data => {
+                    if (Data.length > 0) {
+                        var html = `<button style="width: 100%; background: red;" onclick="deleteRecent();">Delete Recent Activity</button>`;
+                        Data.forEach((v) => {
+                            var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
+                            recipies[instruction_id] = [v.instructions, v.ingredients, v.title]
+                            html = html + `
+                                <div class="result">
+                                    <b>${v.title}</b>
+                                    <p>${v.ingredients.replaceAll("|", "\n")}</p>
+                                    <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
+                                    <button onclick="favourite_recipe('${instruction_id}');" id="favouriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+    </svg> Favourite</button>
+                            <button onclick="open_comments('${instruction_id}');" id="commentButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                            </svg> Open Comments</button>
+                                </div>
+                            `
+                        });
+                        document.getElementById("recentResults").innerHTML = html;
+                    } else {
+                        document.getElementById("recentResults").innerHTML = "Recent activity successfully deleted!";
+                    }
+                }).catch(E => {
+                    document.getElementById("recentResults").innerHTML = "Recent activity successfully deleted!";
+                })
+            })
+        });
+    };
 
-function open_instructions(object) {
-    var instructions = recipies[object];
-    document.getElementById("search_page").style["display"] = "none";
-    document.getElementById("instructions").style.display = "flex";
-    document.getElementById("youWillNeed").innerHTML = instructions[1];
-    document.getElementById("method").innerHTML = instructions[0];
-};
-
-function favorite_recipe(id) {
-    if (!id) {
-        alert("Error: recipe ID not provided!")
-        return;
+    function toggle_recent_view(object) {
+        if (!recent_visible) {
+            object.innerText = "Return To Search";
+            recent_visible = true;
+            document.getElementById("results").innerText = "";
+            document.getElementById("recentResults").style.display = "flex";
+            document.getElementById("results").style.display = "none";
+            document.getElementById("recentResults").style.overflow = "hidden";
+            document.getElementById("recentResults").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+            fetch("https://recipies.duckdns.org/api/search/recently").then(Response => {
+                document.getElementById("recentResults").style.overflow = "auto";
+                recipies = {};
+                Response.json().then(Data => {
+                    if (Data.length > 0) {
+                        var html = `<button style="width: 100%; background: red;" onclick="deleteRecent();">Delete Recent Activity</button>`;
+                        Data.forEach((v) => {
+                            var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
+                            recipies[instruction_id] = [v.instructions, v.ingredients, v.title]
+                            html = html + `
+                                <div class="result">
+                                    <b>${v.title}</b>
+                                    <p>${v.ingredients.replaceAll("|", "\n")}</p>
+                                    <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
+                                    <button onclick="favourite_recipe('${instruction_id}');" id="favouriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+    </svg> Favourite</button>
+                            <button onclick="open_comments('${instruction_id}');" id="commentButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                            </svg> Open Comments</button>
+                                </div>
+                            `
+                        });
+                        document.getElementById("recentResults").innerHTML = html;
+                    } else {
+                        document.getElementById("recentResults").innerHTML = "There was no recent activity!";
+                    }
+                }).catch(E => {
+                    document.getElementById("recentResults").innerHTML = "There was no recent activity!";
+                })
+            })
+        } else {
+            object.innerText = "Recent Searches";
+            recent_visible = false;
+            document.getElementById("results").style.display = "flex";
+            document.getElementById("recentResults").style.display = "none";
+        }
     }
 
-    var recipe = recipies[id];
-    var title = recipe[2];
-    var ingredients = recipe[1];
-    var instructions = recipe[0];
+    function return_to_search() {
+        document.getElementById("search_page").style["display"] = "flex";
+        document.getElementById("instructions").style.display = "none";
+        document.getElementById("comments").style.display = "none";
+    };
 
-    fetch("https://recipies.duckdns.org/api/favorites/favorites", {
-        "method": "POST",
-        "headers": {
-            "content-type": "application/json"
-        },
-        "body": JSON.stringify({
-            "title": title,
-            "ingredients": ingredients,
-            "instructions": instructions
-        })
-    }).then(Response => {
-        Response.json().then(Data => {
-        }).catch(E => {
-            alert("Error: unable to add recipe to favorites!")
-        })
-    }).catch(E => {
-        alert("Error: unable to add recipe to favorites!")
-    })
-}
+    function open_instructions(object) {
+        var instructions = recipies[object];
+        document.getElementById("search_page").style["display"] = "none";
+        document.getElementById("instructions").style.display = "flex";
+        document.getElementById("youWillNeed").innerHTML = instructions[1];
+        document.getElementById("method").innerHTML = instructions[0];
+        document.getElementById("comments").style.display = "none";
+    };
 
-document.getElementById("searchButton").addEventListener("click", () => {
-    document.getElementById("results").style.overflow = "hidden";
-    document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
-    var content = document.getElementById("searchBar").value;
-    fetch("http://103.155.92.182:8086/api/search/", {
-        "method": "POST",
-        "headers": {
-            "content-type": "application/json"
-        },
-        "body": JSON.stringify({
-            "item": content
-        })
-    }).then(Response => {
-        document.getElementById("results").style.overflow = "auto";
-        recipies = {};
-        Response.json().then(Data => {
-            if (Data.length > 0) {
-                var html = ``;
-                Data.forEach((v) => {
-                    var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
+    function favourite_recipe() {
+        if (!logged_in) {
+            alert("You must be logged in!")
+        } else {
+
+        };
+    }
+
+    function open_comments() {
+        document.getElementById("instructions").style.display = "none";
+        document.getElementById("search_page").style.display = "none";
+        document.getElementById("comments").style.display = "flex";
+    }
+
+    document.getElementById("searchButton").addEventListener("click", () => {
+        if (recent_visible) {
+            toggle_recent_view(document.getElementById("recentSearches"))
+        };
+        document.getElementById("results").style.overflow = "hidden";
+        document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+        var content = document.getElementById("searchBar").value;
+        fetch("https://recipies.duckdns.org/api/search/", {
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "body": JSON.stringify({
+                "item": content
+            })
+        }).then(Response => {
+            document.getElementById("results").style.overflow = "auto";
+            recipies = {};
+            Response.json().then(Data => {
+                if (Data.length > 0) {
+                    var html = ``;
+                    Data.forEach((v) => {
+                        var instruction_id = new Date().getTime().toString() + "_" + Math.random().toString();
                         recipies[instruction_id] = [v.instructions, v.ingredients, v.title]
                         html = html + `
                             <div class="result">
                                 <b>${v.title}</b>
                                 <p>${v.ingredients.replaceAll("|", "\n")}</p>
                                 <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
-                                <button onclick="favorite_recipe('${instruction_id}');" id="favoriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <button onclick="favourite_recipe('${instruction_id}');" id="favouriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
   <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg> favorite</button>
+</svg> Favourite</button>
+                        <button onclick="open_comments('${instruction_id}');" id="commentButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                        </svg> Open Comments</button>
                             </div>
                         `
                     });
@@ -461,6 +594,4 @@ document.getElementById("searchButton").addEventListener("click", () => {
     })
 </script>
 
-
-      </section>
-    </div>
+</html>
