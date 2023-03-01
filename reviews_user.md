@@ -227,6 +227,7 @@
         <button onclick="return_to_search();">Return To Search</button>
         <h1>Leave a Comment & Rating</h1>
         <div>
+            <input type="hidden" id="id" name="id" readonly>        
             <b>You are reviewing: </b>
             <input type="text" id="recipe" name="recipe" readonly>
             <b>Rating: </b>
@@ -338,47 +339,93 @@
         // alert("You are in create_user function..add to DB");
         // alert(document.getElementById("recipe").value);
         // alert(document.getElementById("name").value);
-        const body = {
-            uid: document.getElementById("name").value,
-            rname: document.getElementById("recipe").value,
+        flag = document.getElementById("id").value
+        if (flag == 0) {
+            // New data entry        
+            const body = {
+                uid: document.getElementById("name").value,
+                rname: document.getElementById("recipe").value,
+                comment: document.getElementById("comment").value,
+                rating: document.getElementById("rating").value,
+            };
+            const requestOptions = {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: {
+                    "content-type": "application/json",
+                    'Authorization': 'Bearer my-token',
+                },
+            };
+            document.getElementById("id").value = "";
+            document.getElementById("name").value = "";
+            //document.getElementById("recipe").value = "";
+            document.getElementById("comment").value = "";
+            document.getElementById("rating").value = "";
+            // URL for Create API
+            // Fetch API call to the database to create a new user
+            fetch(create_fetch, requestOptions)
+            .then(response => {
+                // trap error response from Web API
+                if (response.status !== 200) {
+                const errorMsg = 'Invalid Input - Database create error: ' + response.status;
+                console.log(errorMsg);
+                alert(errorMsg);
+                // const tr = document.createElement("tr");
+                // const td = document.createElement("td");
+                // td.innerHTML = errorMsg;
+                // tr.appendChild(td);
+                // resultContainer.appendChild(tr);
+                return;
+                }
+                // response contains valid result
+                response.json().then(data => {
+                    console.log(data);
+                    //add a table row for the new/created userid
+                    add_row(data);
+                })
+            })
+        }
+        else{
+            // update user record
+            const body = {
+            id: document.getElementById("id").value,
             comment: document.getElementById("comment").value,
             rating: document.getElementById("rating").value,
-        };
-        const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: {
-                "content-type": "application/json",
-                'Authorization': 'Bearer my-token',
-            },
-        };
-        document.getElementById("name").value = "";
-        //document.getElementById("recipe").value = "";
-        document.getElementById("comment").value = "";
-        document.getElementById("rating").value = "";
-        // URL for Create API
-        // Fetch API call to the database to create a new user
-        fetch(create_fetch, requestOptions)
-        .then(response => {
-            // trap error response from Web API
-            if (response.status !== 200) {
-            const errorMsg = 'Invalid Input - Database create error: ' + response.status;
-            console.log(errorMsg);
-            alert(errorMsg);
-            // const tr = document.createElement("tr");
-            // const td = document.createElement("td");
-            // td.innerHTML = errorMsg;
-            // tr.appendChild(td);
-            // resultContainer.appendChild(tr);
-            return;
-            }
-            // response contains valid result
-            response.json().then(data => {
-                console.log(data);
-                //add a table row for the new/created userid
-                add_row(data);
+            uid: document.getElementById("name").value
+            };
+            const requestOptions = {
+                method: ['PUT'],
+                body: JSON.stringify(body),
+                headers: {
+                    "content-type": "application/json",
+                    'Authorization': 'Bearer my-token',
+                },
+            }; 
+            // alert("update_review- before fetch");            
+            fetch(update_fetch, requestOptions)
+            .then(response => {
+                // trap error response from Web API
+                if (response.status !== 200) {
+                    const errorMsg = 'Invalid Input - Database Update error: ' + response.status;
+                    console.log(errorMsg);
+                    alert(errorMsg);
+                    return;
+                }
+                // response contains valid result
+                response.json().then(data => {
+                    // alert("update_review- valid response");
+                    // alert("Record updated");
+                    resultContainer.innerHTML = ''
+                    // Load users on page entry
+                    read_users();
+                    // alert("in update end- after update_row");
+                    document.getElementById("id").value = ""
+                    document.getElementById("comment").value = ""
+                    document.getElementById("rating").value = ""
+                    document.getElementById("name").value = ""
+                })
             })
-        })
+        }
     }
     function add_row(data) {
         const tr = document.createElement("tr");
@@ -443,8 +490,8 @@
             response.json().then(data => {
                 console.log(data);
                 //alert(data);           
-                delete(data);
-                //alert("in delete end- after add_row");
+                //delete(data);
+                // alert("Record deleted");
                 resultContainer.innerHTML = ''
                 // Load users on page entry
                 read_users();
@@ -452,39 +499,44 @@
         })
     }
     function update_review(id,rname,comment,rating,uid){
-        //alert(id);
+        // alert("update_review");
+        // alert(id);
+        document.getElementById("id").value = id;
         document.getElementById("recipe").value = rname;
         document.getElementById("comment").value = comment;
         document.getElementById("rating").value = rating; 
-        document.getElementById("uid").value = uid; 
-        const body = {
-            id: id,
-        };
-        const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: {
-                "content-type": "application/json",
-                'Authorization': 'Bearer my-token',
-            },
-        };             
-        fetch(update_fetch, requestOptions)
-        .then(response => {
-            // trap error response from Web API
-            if (response.status !== 200) {
-            const errorMsg = 'Invalid Input - Database Update error: ' + response.status;
-            console.log(errorMsg);
-            alert(errorMsg);
-            return;
-            }
-            // response contains valid result
-            response.json().then(data => {
-                console.log(data);
-                //alert(data);                      
-                update_row(data);
-                //alert("in update end- after update_row");
-            })
-        })
+        document.getElementById("name").value = uid; 
+        // update user record working code
+        // const body = {
+        //     id: id,
+        //     comment: comment,
+        //     rating: rating,
+        //     uid: uid
+        // };
+        // const requestOptions = {
+        //     method: ['PUT'],
+        //     body: JSON.stringify(body),
+        //     headers: {
+        //         "content-type": "application/json",
+        //         'Authorization': 'Bearer my-token',
+        //     },
+        // }; 
+        // alert("update_review- before fetch");            
+        // fetch(update_fetch, requestOptions)
+        // .then(response => {
+        //     // trap error response from Web API
+        //     if (response.status !== 200) {
+        //         const errorMsg = 'Invalid Input - Database Update error: ' + response.status;
+        //         console.log(errorMsg);
+        //         alert(errorMsg);
+        //         return;
+        //     }
+        //     // response contains valid result
+        //     response.json().then(data => {
+        //         alert("update_review- valid response");
+        //         alert("in update end- after update_row");
+        //     })
+        // }) 
     }
     /////////////////////
     function return_to_search() {
@@ -500,6 +552,34 @@
         document.getElementById("review_page").style["display"] = "none";
         document.getElementById("youWillNeed").innerHTML = instructions[1];
         document.getElementById("method").innerHTML = instructions[0];
+    };
+    function favorite_recipe(id) {
+        if (!id) {
+            alert("Error: recipe ID not provided!")
+            return;
+        }
+        var recipe = recipies[id];
+        var title = recipe[2];
+        var ingredients = recipe[1];
+        var instructions = recipe[0];
+        fetch("http://192.168.7.177:8086/api/favorites/favorites", {
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "body": JSON.stringify({
+                "title": title,
+                "ingredients": ingredients,
+                "instructions": instructions
+            })
+        }).then(Response => {
+            Response.json().then(Data => {
+            }).catch(E => {
+                alert("Error: unable to add recipe to favorites!")
+            })
+        }).catch(E => {
+            alert("Error: unable to add recipe to favorites!")
+        })
     };
     function addReview(id, name) {
         // alert("You are in addReview function");
@@ -527,7 +607,7 @@
                 "item": content
             })
         }).then(Response => {
-            // alert("after fetching search results..in response");
+            //alert("after fetching search results..in response");
             document.getElementById("results").style.overflow = "auto";
             recipies = {};
             Response.json().then(Data => {
@@ -542,6 +622,9 @@
                                 <p>${v.ingredients.replaceAll("|", "\n")}</p>
                                 <button onclick="open_instructions('${instruction_id}')">View Instructions</button>
                                 <button onclick="addReview('${instruction_id}', '${v.title}')">Review</button>
+                                <button onclick="favorite_recipe('${instruction_id}');" id="favoriteButton"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+</svg> favorite</button>
                             </div>
                         `
                     });
