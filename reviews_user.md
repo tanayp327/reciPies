@@ -597,8 +597,8 @@
         document.getElementById("results").innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
         var content = document.getElementById("searchBar").value;
         // alert("b4 fetching search results");
-        fetch("https://recipies.duckdns.org/api/search/", {
-        // fetch("http://127.0.0.1:8086/api/search/", {
+        fetch("https://recipies.duckdns.org/api/search", {
+        // fetch("http://127.0.0.1:8086/api/search", {
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
