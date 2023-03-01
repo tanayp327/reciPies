@@ -50,7 +50,7 @@
         <ul id="favorites-list"></ul>
         <script>
             // Make a GET request to the API endpoint to retrieve the list of favorites
-            fetch('http://127.0.0.1:8086/api/favorites/favorites/all')
+            fetch('https://recipies.duckdns.org/api/favorites/favorites/all')
                 .then(response => response.json())
                 .then(favorites => {
                     // Add each favorite to the list on the HTML page
@@ -64,7 +64,7 @@
                         deleteButton.textContent = 'Delete';
                         deleteButton.addEventListener('click', () => {
                             // Make a DELETE request to the API endpoint to delete the favorite
-                            fetch(`http://127.0.0.1:8086/api/favorites/favorites/${favorite.title}`, {
+                            fetch(`https://recipies.duckdns.org/api/favorites/favorites/${favorite.title}`, {
                                 method: 'DELETE'
                             })
                             .then(() => {
